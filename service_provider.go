@@ -25,7 +25,7 @@ func (this ServiceProvider) Register(app contracts.Application) {
 		}
 	})
 
-	app.Singleton("redis.connection", func(factory contracts.RedisFactory) contracts.RedisConnection {
+	app.Singleton("redis", func(factory contracts.RedisFactory) contracts.RedisConnection {
 		return factory.Connection()
 	})
 
