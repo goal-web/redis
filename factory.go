@@ -14,7 +14,7 @@ type Factory struct {
 }
 
 func (this *Factory) getName(names ...string) string {
-	if len(names) > 0 {
+	if len(names) > 0 && names[0] != "" {
 		return names[0]
 	} else {
 		return this.config.Default
