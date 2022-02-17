@@ -5,12 +5,14 @@ import (
 	goredis "github.com/go-redis/redis/v8"
 	"github.com/goal-web/contracts"
 	"github.com/goal-web/supports/utils"
+	"sync"
 )
 
 type Factory struct {
 	config           Config
 	exceptionHandler contracts.ExceptionHandler
 	connections      map[string]contracts.RedisConnection
+	mutex            sync.Mutex
 }
 
 func (this *Factory) getName(names ...string) string {
@@ -30,6 +32,8 @@ func (this *Factory) Connection(names ...string) contracts.RedisConnection {
 
 	config := this.config.Stores[name]
 
+	this.mutex.Lock()
+	defer this.mutex.Unlock()
 	// todo: 待优化 redis 配置
 	this.connections[name] = &Connection{
 		exceptionHandler: this.exceptionHandler,

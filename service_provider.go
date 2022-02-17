@@ -2,6 +2,7 @@ package redis
 
 import (
 	"github.com/goal-web/contracts"
+	"sync"
 )
 
 type ServiceProvider struct {
@@ -22,6 +23,7 @@ func (this ServiceProvider) Register(app contracts.Application) {
 			config:           config.Get("redis").(Config),
 			exceptionHandler: handler,
 			connections:      make(map[string]contracts.RedisConnection),
+			mutex:            sync.Mutex{},
 		}
 	})
 
