@@ -5,6 +5,25 @@ import (
 	"sync"
 )
 
+var (
+	// factory 默认 redis 客户端
+	factory contracts.RedisFactory
+	cli     contracts.RedisConnection
+)
+
+// Default 用于不方便注入的地方使用，请确保已经注册了 redis 服务
+func Default() contracts.RedisConnection {
+	if cli == nil {
+		cli = factory.Connection()
+	}
+	return cli
+}
+
+// DefaultFactory 用于不方便注入的地方使用，请确保已经注册了 redis 服务
+func DefaultFactory() contracts.RedisFactory {
+	return factory
+}
+
 type ServiceProvider struct {
 }
 
@@ -19,12 +38,14 @@ func (this ServiceProvider) Start() error {
 func (this ServiceProvider) Register(app contracts.Application) {
 
 	app.Singleton("redis.factory", func(config contracts.Config, handler contracts.ExceptionHandler) contracts.RedisFactory {
-		return &Factory{
+		factory = &Factory{
 			config:           config.Get("redis").(Config),
 			exceptionHandler: handler,
 			connections:      make(map[string]contracts.RedisConnection),
 			mutex:            sync.Mutex{},
 		}
+
+		return factory
 	})
 
 	app.Singleton("redis", func(factory contracts.RedisFactory) contracts.RedisConnection {
