@@ -12,7 +12,7 @@ type Connection struct {
 	client           *goredis.Client
 }
 
-func (this *Connection) Subscribe(channels []string, closure contracts.RedisSubscribeFunc) {
+func (this *Connection) Subscribe(channels []string, closure contracts.RedisSubscribeFunc) error {
 	go func() {
 		pubSub := this.client.Subscribe(context.Background(), channels...)
 		defer func(pubSub *goredis.PubSub) {
@@ -31,9 +31,10 @@ func (this *Connection) Subscribe(channels []string, closure contracts.RedisSubs
 			closure(msg.Payload, msg.Channel)
 		}
 	}()
+	return nil
 }
 
-func (this *Connection) PSubscribe(channels []string, closure contracts.RedisSubscribeFunc) {
+func (this *Connection) PSubscribe(channels []string, closure contracts.RedisSubscribeFunc) error {
 	go func() {
 		pubSub := this.client.PSubscribe(context.Background(), channels...)
 		defer func(pubSub *goredis.PubSub) {
@@ -52,6 +53,7 @@ func (this *Connection) PSubscribe(channels []string, closure contracts.RedisSub
 			closure(msg.Payload, msg.Channel)
 		}
 	}()
+	return nil
 }
 
 func (this *Connection) Command(method string, args ...interface{}) (interface{}, error) {
