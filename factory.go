@@ -15,16 +15,8 @@ type Factory struct {
 	mutex            sync.Mutex
 }
 
-func (this *Factory) getName(names ...string) string {
-	if len(names) > 0 && names[0] != "" {
-		return names[0]
-	} else {
-		return this.config.Default
-	}
-}
-
 func (this *Factory) Connection(names ...string) contracts.RedisConnection {
-	name := this.getName(names...)
+	name := utils.DefaultString(names, this.config.Default)
 
 	if connection, existsConnection := this.connections[name]; existsConnection {
 		return connection
