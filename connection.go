@@ -23,6 +23,7 @@ func (this *Connection) Subscribe(channels []string, closure contracts.RedisSubs
 		defer func(pubSub *goredis.PubSub) {
 			err := pubSub.Close()
 			if err != nil {
+
 				// 处理异常
 				this.exceptionHandler.Handle(SubscribeException{
 					err, nil,
