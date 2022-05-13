@@ -650,7 +650,7 @@ func (this *Connection) ScriptLoad(script string) (string, error) {
 // zset start
 
 func (this *Connection) ZAdd(key string, members ...*contracts.Z) (int64, error) {
-	goredisMembers := make([]*goredis.Z, 0)
+	goredisMembers := make([]*goredis.Z, len(members))
 	for memberKey, value := range members {
 		goredisMembers[memberKey] = &goredis.Z{
 			Score:  value.Score,
@@ -1433,7 +1433,7 @@ func (this *Connection) ScriptLoadWithContext(ctx context.Context, script string
 // zset start
 
 func (this *Connection) ZAddWithContext(ctx context.Context, key string, members ...*contracts.Z) (int64, error) {
-	goredisMembers := make([]*goredis.Z, 0)
+	goredisMembers := make([]*goredis.Z, len(members))
 	for memberKey, value := range members {
 		goredisMembers[memberKey] = &goredis.Z{
 			Score:  value.Score,
