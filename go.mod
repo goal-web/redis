@@ -1,10 +1,10 @@
 module github.com/goal-web/redis
 
-go 1.17
+go 1.19
 
 require (
 	github.com/go-redis/redis/v8 v8.11.4
-	github.com/goal-web/contracts v0.1.57
+	github.com/goal-web/contracts v0.1.62
 	github.com/goal-web/supports v0.1.29
 )
 
