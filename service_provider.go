@@ -27,15 +27,19 @@ func DefaultFactory() contracts.RedisFactory {
 type ServiceProvider struct {
 }
 
-func (this ServiceProvider) Stop() {
+func NewService() contracts.ServiceProvider {
+	return &ServiceProvider{}
+}
+
+func (provider ServiceProvider) Stop() {
 
 }
 
-func (this ServiceProvider) Start() error {
+func (provider ServiceProvider) Start() error {
 	return nil
 }
 
-func (this ServiceProvider) Register(app contracts.Application) {
+func (provider ServiceProvider) Register(app contracts.Application) {
 
 	app.Singleton("redis.factory", func(config contracts.Config, handler contracts.ExceptionHandler) contracts.RedisFactory {
 		factory = &Factory{

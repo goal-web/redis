@@ -1,18 +1,7 @@
 package redis
 
 import (
-	"github.com/goal-web/contracts"
+	"github.com/goal-web/supports/exceptions"
 )
 
-type SubscribeException struct {
-	error
-	fields contracts.Fields
-}
-
-func (s SubscribeException) Error() string {
-	return s.error.Error()
-}
-
-func (s SubscribeException) Fields() contracts.Fields {
-	return s.fields
-}
+type SubscribeException = exceptions.Exception
