@@ -20,10 +20,10 @@ github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V
 github.com/go-redis/redis/v8 v8.11.4 h1:kHoYkfZP6+pe04aFTnhDH6GDROa5yJdHJVNxV3F46Tg=
 github.com/go-redis/redis/v8 v8.11.4/go.mod h1:2Z2wHZXdQpCDXEGzqMockDpNyYvi2l4Pxt6RJr792+w=
 github.com/go-task/slim-sprig v0.0.0-20210107165309-348f09dbbbc0/go.mod h1:fyg7847qk6SyHyPtNmDHnmrv/HOrqktSC+C9fM+CJOE=
-github.com/goal-web/contracts v0.2.0 h1:CAk+mLD2dC//DiCV9TAUSN1zopWSrPZ8+/vCxs+cu8E=
-github.com/goal-web/contracts v0.2.0/go.mod h1:33koNCIiQ7GzBmYycynenVtv5E+Jq7lWGZ8vKi5uXJQ=
-github.com/goal-web/supports v0.2.0 h1:I1MuDcyOSo9JJprXwvyPeV99kn/Zs/VQEM7dDsv6VyY=
-github.com/goal-web/supports v0.2.0/go.mod h1:OZFq18eCd+9atA7re2gbNMZ2zWGdpuSS8WmCRsqhGm4=
+github.com/goal-web/contracts v0.3.0 h1:XVdeRGbswyo+e1Tp4SmKD5KJqrMm23eakaARXob7U7A=
+github.com/goal-web/contracts v0.3.0/go.mod h1:33koNCIiQ7GzBmYycynenVtv5E+Jq7lWGZ8vKi5uXJQ=
+github.com/goal-web/supports v0.3.0 h1:YXfakupI5oS979Lj4lr4qgBLPEvQOT7cvVPA27y0xu8=
+github.com/goal-web/supports v0.3.0/go.mod h1:5o1Mj6/sohqiA+5UROs+x8p5BvnJAMngwxgY3YDASVo=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/golang/protobuf v1.3.1/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/golang/protobuf v1.4.0-rc.1/go.mod h1:ceaxUfeHdC40wWswd/P6IGgMaK3YpKi5j83Wpe3EHw8=
